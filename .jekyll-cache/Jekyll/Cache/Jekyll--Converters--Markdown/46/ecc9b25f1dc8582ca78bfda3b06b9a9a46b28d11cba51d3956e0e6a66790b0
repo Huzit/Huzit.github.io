@@ -1,0 +1,126 @@
+I"�.<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간제한</th>
+      <th style="text-align: left">메모리제한</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2초</td>
+      <td style="text-align: left">128MB</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제설명">문제설명</h2>
+<p>갑부 최백준 조교는 동전을 최소로 바꾸는데 성공했으나 김재홍 조교가 그 돈을 발견해서 최백준 조교에게 그 돈을 나누자고 따진다.</p>
+
+<p>그 사실이 전 우주로 알려지자 우주에 있던 많은 생명체들이 자신들에게 돈을 분배해 달라고 당장 달려오기 시작했다.</p>
+
+<p>프로토스 중앙 우주 정부의 정책인, ‘모든 지적 생명체는 동등하다’라는 규칙에 입각해서 돈을 똑같이 분배하고자 한다.</p>
+
+<p><strong>한 생명체에게 얼마씩 돈을 줄 수 있는가?</strong></p>
+
+<p><strong>또, 생명체들에게 동일하게 분배한 후 남는 돈은 얼마인가?</strong></p>
+<h2 id="입출력">입출력</h2>
+<h3 id="1-입력">1. 입력</h3>
+<p>첫째 줄에는 최백준 조교가 가진 돈 n과 돈을 받으러 온 생명체의 수 m이 주어진다. (1 ≤ m ≤ n ≤ 101000, m과 n은 10진수 정수)</p>
+
+<h3 id="2-출력">2. 출력</h3>
+<p>첫 번째 줄에 생명체 하나에게 돌아가는 돈의 양을 출력한다.
+두 번째 줄에는 1원씩 분배할 수 없는 남는 돈을 출력한다.</p>
+<h2 id="풀이과정">풀이과정</h2>
+<p>문제 자체는 굉장히 간단한 문제다. 첫째줄은 하나에게 돌아가는 돈이므로 &lt;span style=color:orange&gt;나눗셈&lt;/span&gt;, 둘째줄은 &lt;span style=color:orange&gt;나눈 나머지&lt;/span&gt;를 출력하면 된다. 따라서 풀이따라 코드를 작성해봤다.</p>
+<blockquote>
+  <p>백준은 입력값을 표준 입력으로 제시해준다.(찾느라 오래걸림)</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">m</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="n">m</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="n">m</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>당당하게 제출했지만 <strong>InputMismatchException</strong>
+int범위를 넘어선 값이 들어와서 나온 예외라 Long으로 바꿔줬다.
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">Long</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLong</span><span class="o">();</span>
+        <span class="nc">Long</span> <span class="n">m</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLong</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">m</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="n">m</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="n">m</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>또 InputMismatchException가 떴다.
+&lt;span style=color:gray&gt;<del><strong>왜 InputMismatchException???</strong></del>&lt;/span&gt;</p>
+
+<p>|int|long|
+|–|–|
+|–2,147,483,648 ~ 2,147,483,647|-9223372036854775808 ~ 9223372036854775807|
+두 자료형 범위인데 초과했다. 따라서 다른 대안이 필요하다.
+찾아보니 Long를 벗어나는 수는 <a href="https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html">BigInteger</a>를 쓰면 된다고 한다.</p>
+
+<p>&lt;span style=color:orange&gt;<strong>Immutable arbitrary-precision integers.</strong>&lt;/span&gt;</p>
+
+<p>첫 줄에 불변의 임의 정밀도 정수라고 나오는데 무한대 정수 계산할 때 쓴다. BigInteger타입은 연산자가 아닌 전용 메소드를 통해 계산해야한다.
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        
+        <span class="nc">BigInteger</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextBigInteger</span><span class="o">();</span>
+        <span class="nc">BigInteger</span> <span class="n">m</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextBigInteger</span><span class="o">();</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">m</span><span class="o">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//같으면 0, n이 크면 1, n이 작으면 -1</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>	<span class="c1">//나누기</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">remainder</span><span class="o">(</span><span class="n">m</span><span class="o">));</span> <span class="c1">//나머지</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>이렇게 풀이한 결과
+<img src="https://images.velog.io/images/appletorch/post/4f3a3141-3ae2-46cb-a481-19b3e319112d/image.png" alt="" /></p>
+
+<p>맞췄다.
+<img src="https://images.velog.io/images/appletorch/post/b70c8c08-4a68-4a11-8181-999d2462dc0c/image.png" alt="" /></p>
+<h4 id="kotlin-code">kotlin Code</h4>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.util.*</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kd">val</span> <span class="py">scan</span> <span class="p">=</span> <span class="nc">Scanner</span><span class="p">(</span><span class="nc">System</span><span class="p">.</span><span class="n">`in`</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">n</span> <span class="p">=</span> <span class="n">scan</span><span class="p">.</span><span class="nf">nextBigInteger</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="py">m</span> <span class="p">=</span> <span class="n">scan</span><span class="p">.</span><span class="nf">nextBigInteger</span><span class="p">()</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="nf">compareTo</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">!=</span> <span class="p">-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="nf">println</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="nf">divide</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+        <span class="nf">println</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="nf">remainder</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
