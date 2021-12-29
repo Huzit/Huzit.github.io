@@ -198,12 +198,3 @@ This theme is licensed under the [MIT license](https://opensource.org/licenses/m
 [jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
 [jekyll-feed]: https://github.com/jekyll/jekyll-feed
 [highlight-js]: https://github.com/highlightjs/highlight.js
-
-
-문제해결 과정
-1. 번들 인스톨과정중 경로 인코딩문제생겨서 컴 포맷
-2. 지킬 압출 해제후 번들 인스톨하니 문제발생
-3. 알고보니 webrick이 ruby3.0부턴 자동으로 설치가 안되서 생기는 문제
-4. 다시 install하니 안됨
-5. git이 설치가 안되있었음
-6. 정상 작동
