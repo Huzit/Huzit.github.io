@@ -62,6 +62,7 @@ tags: [코딩테스트, 자바, 코틀린]
 - return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.
 
 ### 입출력 예 
+
 |id_list| 	report                                                                         | 	k  | 	result |
 |---|---------------------------------------------------------------------------------|-----|---------|
 |["muzi", "frodo", "apeach", "neo"]| 	["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]	| 2   | 	[2,1,1,0] |
@@ -130,6 +131,7 @@ class Solution {
 ```
 
 코틀린 코드로도 만들 수 있다.
+
 ```kotlin
 class Solution {
     fun solution(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
@@ -137,7 +139,6 @@ class Solution {
     val reportList = HashMap<String, HashSet<String>>() //피 신고자, 신고자
     val countMap = LinkedHashMap<String, Int>() //신고한 사람이 받은 문자 갯수
     var answer = IntArray(id_list.size) //각 유저별 처리결과 메시지를 받은 횟수
-
 
     for (i in id_list)
         countMap.put(i, 0)
@@ -161,4 +162,5 @@ class Solution {
     answer = countMap.values.toIntArray()
     return answer
     }
-}```
+}
+```
