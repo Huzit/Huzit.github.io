@@ -50,7 +50,7 @@ tags: [android]
 >정리하자면 어댑터를 통해 만들어진 각 아이템뷰는 뷰홀더객체에 저장되어 화면에 표시되고, 필요에 따라 생성 또는 재활용 됩니다.
 
 ### 4. 구현순서
-**<span style="color:#FC4C68">리사이클러뷰 추가 -> 아이템뷰(뷰 홀더) 레이아웃 추가 -> 어댑터 구현 -> 리사이클러뷰에서 어댑터, 레이아웃 매니저 지정</span>**
+** <span style="color:#FC4C68">리사이클러뷰 추가 -> 아이템뷰(뷰 홀더) 레이아웃 추가 -> 어댑터 구현 -> 리사이클러뷰에서 어댑터, 레이아웃 매니저 지정</span> **
 
 -----------
 ## RecyclerView 구현
@@ -138,6 +138,7 @@ tags: [android]
 ### 3. Adapter 구현
 구현 단계에서 가장 중요한 Adapter입니다. Adapter에선 특별한 경우를 제외하고 ViewHolder를 inner Class로 구현하게됩니다.
 
+#### 전반적인 코드 형태
 ```kotlin
 package com.example.user_client.search
 
@@ -145,9 +146,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 
-class SearchMainAdapter : RecyclerView.Adapter<SearchMainAdapter.SearchMainViewHolder>() {
+class SearchMainAdapter(private val dataset: ArrayList<_DataType_>) : RecyclerView.Adapter<SearchMainAdapter.SearchMainViewHolder>() {
 
-    inner class SearchMainViewHolder(view: RecyclerView) : RecyclerView.ViewHolder(view){
+    inner class SearchMainViewHolder(view: View) : RecyclerView.ViewHolder(view){
         
     }
 
@@ -197,7 +198,7 @@ data class SearchMain(
 #### 2. onCreateViewHolder
 ```kotlin
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchMainViewHolder {
-    //레이아웃을 객체형태로 변환(inflate)하고 반환해준다.
+    //구현한 뷰홀더 레이아웃을 객체형태로 변환(inflate)하고 반환해준다.
         val view = LayoutInflater.from(parent.context).inflate(R.layout.search_viewgroup, parent, false)
         return SearchMainViewHolder(view)
     }
@@ -252,6 +253,39 @@ class SearchFragment : Fragment() {
         binding = null
         super.onDestroyView()
     }
+}
+```
+## 코드 전문
+```kotlin
+class SearchAdapter(private val dataset: ArrayList<SearchData>) : RecyclerView.Adapter<SearchAdapter.SearchDataViewHolder>() {
+
+    inner class SearchDataViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        val dateTime = view.findViewById<TextView>(R.id.search_datetime)
+        val product = view.findViewById<TextView>(R.id.search_product)
+        val textArea = view.findViewById<TextView>(R.id.search_textarea)
+        val process = view.findViewById<TextView>(R.id.search_process)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchDataViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_viewgroup, parent, false)
+        return SearchDataViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: SearchDataViewHolder, position: Int) {
+        var process = dataset[position].process
+        holder.dateTime.text = dataset[position].dateTime
+        holder.product.text = dataset[position].product
+        holder.textArea.text = dataset[position].productInfo
+        holder.process.text = process
+        //진행상황별 라벨색 변경
+        when(process){
+            "진행중" -> holder.process.setBackgroundResource(R.drawable.label_blue)
+            "입고완료", "상세보기" -> holder.process.setBackgroundResource(R.drawable.label_green)
+            "예약대기" -> holder.process.setBackgroundResource(R.drawable.label_red)
+        }
+    }
+
+    override fun getItemCount(): Int = dataset.size
 }
 ```
 ## 결과
