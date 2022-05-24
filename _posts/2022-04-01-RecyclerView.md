@@ -8,19 +8,22 @@ tags: [android]
 ## RecyclerView란?
 
 ### 1. 정의
-[안드로이드 공식문서](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView)에는 <span style=color:#FC4C68>A flexible view for providing a limited window into a large data set.</span> 로 소개하고 있습니다. 번역하면 **'대규모 데이터셋을 제한된 범위에 제공하기 위한 유연한 뷰'** 입니다.
+[안드로이드 공식문서](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView)에는 <span style="color:#FC4C68"> A flexible view for providing a limited window into a large data set.</span> 로 소개하고 있습니다. 번역하면 **'대규모 데이터셋을 제한된 범위에 제공하기 위한 유연한 뷰'** 입니다.
 조금 이해를 돕기위해 설명을 덧붙이자면
->**'사용자가 관리하는 <span style=color:red>데이터 셋</span>을 아이템 단위로 구성하여 화면에 출력하는 <span style=color:red>뷰 그룹</span>으로 제한된 화면에 제공하기위해 스크롤 가능한 <span style=color:red>리스트</span>로 표시해주는 위젯'이라 말할 수 있습니다. **
+> 사용자가 관리하는 <span style="color:red">데이터 셋</span>을 아이템 단위로 구성하여 화면에 출력하는 <span style="color:red">뷰 그룹</span>으로 제한된 화면에 제공하기위해 스크롤 가능한 <span style="color:red">리스트</span>로 표시해주는 위젯'이라 말할 수 있습니다.
 
 이름으로 넘어가서 왜 리사이클러 뷰(RecyclerView)라고 정했을까요?
-그 이유는 리스트 뷰(ListView)와 다르게 매번 리스트 항목이 갱신될 때마다 <span style=color:#FC4C68>기존에 사용했던 아이템 뷰를 재활용</span>하기 때문입니다. 그리고 이를 위해 기본적으로 **뷰홀더(ViewHolder)패턴**을 사용하도록 만들어놨습니다.
+그 이유는 리스트 뷰(ListView)와 다르게 매번 리스트 항목이 갱신될 때마다 <span style="color:#FC4C68">기존에 사용했던 아이템 뷰를 재활용</span>하기 때문입니다. 그리고 이를 위해 기본적으로 **뷰홀더(ViewHolder)패턴**을 사용하도록 만들어놨습니다.
 
 
 ### 2. 장/단점
-이러한 리사이클러 뷰(RecyclerView)의 최대 장점은 <span style=color:#FC4C68>"유연함"</span>입니다.
->리사이클러뷰(RecyclerView)는 아이템을 표시하기위해 뷰홀더(ViewHolder)를 필수적으로 생성하도록 되어있습니다. 이는 단순 리사이클러뷰(RecyclerView)에 포함된 요소임을 넘어 개발자가 직접 뷰홀더(ViewHolder) 패턴을 적용할 때 고민해야 했던 여러 이슈들이 구현사항에 포함되었다는 것을 의미합니다.
+이러한 리사이클러 뷰(RecyclerView)의 최대 장점은 <span style="color:#FC4C68">"유연함"</span>입니다.
+> 리사이클러뷰(RecyclerView)는 아이템을 표시하기위해 뷰홀더(ViewHolder)를 필수적으로 생성하도록 되어있습니다. 
+> 이는 단순 리사이클러뷰(RecyclerView)에 포함된 요소임을 넘어 개발자가 직접 뷰홀더(ViewHolder) 패턴을 적용할 때 고민해야 했던 여러 이슈들이 구현사항에 포함되었다는 것을 의미합니다.
 
-쉬운 예로, 리스트뷰에서 화면의 나열 방향을 수직에서 수평으로 바꾸기위해 리스트뷰가 아닌 다른 뷰를 사용하거나, 리스트뷰 기능을 상당부분 재 구현 해야합니다. 또한 동적으로 구성하기에 한계도 있습니다. 만약 사용자의 선택에 따라 뷰를 새로운 형태로 바꾸고자 한다면 어댑터 내에서 개발자가 직접 처리해야합니다. 하지만 리사이클러뷰는 이러한 단점을 보완하여 개발자가 쉽게 구현할 수 있도록 만들어줍니다. <span style=color:#FC4C68>구현요소 또는 구현에 따른 결과물이 쉽게 변경되거나 확장 될 수 있음을 의미합니다.</span>
+쉬운 예로, 리스트뷰에서 화면의 나열 방향을 수직에서 수평으로 바꾸려면 리스트뷰가 아닌 다른 뷰를 사용하거나, 리스트뷰 기능을 상당부분 재 구현 해야합니다. 
+또한 동적으로 구성하기에 한계도 있습니다. 만약 사용자의 선택에 따라 뷰를 새로운 형태로 바꾸고자 한다면 어댑터 내에서 개발자가 직접 처리해야합니다. 
+하지만 리사이클러뷰는 이러한 단점을 보완하여 개발자가 쉽게 구현할 수 있도록 만들어줍니다. <span style="color:#FC4C68">구현요소 또는 구현에 따른 결과물이 **쉽게 변경되거나 확장** 될 수 있음을 의미합니다.</span>
 
 
 ### 3. 구성요소
@@ -47,7 +50,7 @@ tags: [android]
 >정리하자면 어댑터를 통해 만들어진 각 아이템뷰는 뷰홀더객체에 저장되어 화면에 표시되고, 필요에 따라 생성 또는 재활용 됩니다.
 
 ### 4. 구현순서
-**<span style=color:#FC4C68>리사이클러뷰 추가 -> 아이템뷰(뷰 홀더) 레이아웃 추가 -> 어댑터 구현 -> 리사이클러뷰에서 어댑터, 레이아웃 매니저 지정</span>**
+**<span style="color:#FC4C68">리사이클러뷰 추가 -> 아이템뷰(뷰 홀더) 레이아웃 추가 -> 어댑터 구현 -> 리사이클러뷰에서 어댑터, 레이아웃 매니저 지정</span>**
 
 -----------
 ## RecyclerView 구현
